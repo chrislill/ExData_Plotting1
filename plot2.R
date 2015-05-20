@@ -24,11 +24,11 @@ if (!exists("power.feb")) {
         mutate(Datetime = dmy_hms(Datetime))
 }
 
-# Create Plot 1
-png("plot1.png", bg="transparent")
-hist(power.feb$Global_active_power, 
-     main = "Global Active Power",
-     xlab = "Global Active Power (kilowatts)",
-     ylab = "Frequency",
-     col="red")
+# Create Plot 2
+png("plot2.png", bg="transparent")
+plot(power.feb$Datetime, 
+     power.feb$Global_active_power,
+     type="l"
+     xlab = "",
+     ylab = "Global Active Power (kilowatts)")
 dev.off()
