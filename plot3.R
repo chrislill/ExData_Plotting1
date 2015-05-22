@@ -24,11 +24,21 @@ if (!exists("power.feb")) {
         mutate(Datetime = dmy_hms(Datetime))
 }
 
-# Create Plot 2
-png("plot2.png", bg="transparent")
+# Create Plot 3
+png("plot3.png", bg="transparent")
 plot(power.feb$Datetime, 
-     power.feb$Global_active_power,
+     power.feb$Sub_metering_1,
      type="l",
      xlab = "",
-     ylab = "Global Active Power (kilowatts)")
+     ylab = "Energy sub metering")
+lines(power.feb$Datetime, 
+     power.feb$Sub_metering_2,
+     col = "red")
+lines(power.feb$Datetime, 
+      power.feb$Sub_metering_3,
+      col = "blue")
+legend(x = "topright", 
+       legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"),
+       lty = 1,
+       col = c("black", "red", "blue"))
 dev.off()
